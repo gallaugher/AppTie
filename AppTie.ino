@@ -1,18 +1,3 @@
-/*
-Not the prettiest code, but allowed me to power a Flora + Bluetooth LE
-module to color pick & send animation signals to animate a necktie.
-I was trying to do something fun for Parents Day at Boston College.
-For video showing the product in action, see:
-https://twitter.com/gallaugher/status/1045750298495594497
-
-I used the same wiring scheme for the sewable neopixels that you'll
-find in Adafruit Sparkle Skirt:
-https://learn.adafruit.com/sparkle-skirt-playground?view=all
-
-And I wired the Flora Bluetooth LE module to the Flora with this
-wiring scheme:
-https://learn.adafruit.com/adafruit-flora-bluefruit-le/overview
-*/
 /*********************************************************************
  This is an example for our nRF51822 based Bluefruit LE modules
 
@@ -35,10 +20,12 @@ https://learn.adafruit.com/adafruit-flora-bluefruit-le/overview
 #include "Adafruit_BluefruitLE_UART.h"
 
 #include "BluefruitConfig.h"
+
+// added from adafruit forums
 #include <Adafruit_NeoPixel.h>
 #define NEOPIXEL_PIN 8
 #define NEOPIXEL_TIE_PIN 6
-#define NUMBER_OF_PIXELS 6 // I have six pixels on my tie
+#define NUMBER_OF_PIXELS 6
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUMBER_OF_PIXELS, NEOPIXEL_PIN, NEO_GRB + NEO_KHZ800);
 Adafruit_NeoPixel tieStrip = Adafruit_NeoPixel(NUMBER_OF_PIXELS, NEOPIXEL_TIE_PIN, NEO_GRB + NEO_KHZ800);
 
@@ -424,6 +411,7 @@ void larsenScanner(int iterations) {
       tieStrip.show(); // This sends the updated pixel color to the hardware.
     }
 }
+
 
 // Input a value 0 to 255 to get a color value.
 // The colours are a transition r - g - b - back to r.
